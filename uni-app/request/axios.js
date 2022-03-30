@@ -7,7 +7,7 @@ axios.defaults.baseURL = dev ? '' : config.api_url
 
 //请求拦截
 axios.interceptors.request.use(
-	(request) => {
+	request => {
 		uni.showLoading()
 		request.headers = {
 			...request.headers,
@@ -18,7 +18,7 @@ axios.interceptors.request.use(
 		}
 		return request
 	},
-	(error) => {
+	error => {
 		uni.hideLoading()
 		return new Promise.reject(error)
 	}
@@ -26,12 +26,12 @@ axios.interceptors.request.use(
 
 //响应拦截
 axios.interceptors.response.use(
-	(success) => {
+	success => {
 		//成功，HTTP状态：200、204
 		uni.hideLoading()
 		return Promise.resolve(success.data)
 	},
-	(fail) => {
+	fail => {
 		//失败，HTTP状态：200、204以外的
 		uni.hideLoading()
 		const status = fail.response.status
