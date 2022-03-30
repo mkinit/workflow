@@ -27,19 +27,29 @@ axios.interceptors.request.use(
 //响应拦截
 axios.interceptors.response.use(
 	(success) => {
-		//成功，HTTP状态：200
+		//成功，HTTP状态：200、204
 		uni.hideLoading()
 		return Promise.resolve(success.data)
 	},
 	(fail) => {
-		//失败，HTTP状态：200以外的
+		//失败，HTTP状态：200、204以外的
 		uni.hideLoading()
 		const status = fail.response.status
-		const msg = status === 500 ? '网络错误' : fail.response.data.msg
 		switch (status) {
 			case 401:
+				console.log('请登录')
+				break
+			case 403:
+				console.log('权限不足')
+				break
+			case 403:
+				console.log('接口地址不存在')
+				break
+			case 500:
+				console.log('服务器繁忙')
 				break
 			default:
+				console.log('网络错误')
 				break
 		}
 		return Promise.reject(fail.response.data.msg)
