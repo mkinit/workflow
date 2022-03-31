@@ -1,6 +1,9 @@
 import axios from 'axios'
 import config from '@/config.js'
 
+/*
+使用vue.config.js配置跨域时接口地址需要留空，不需要跨域的时候不用判断是否开发环境，直接写axios.defaults.baseURL = config.api_url即可
+*/
 const env = process.env.NODE_ENV
 const dev = env !== 'production'
 axios.defaults.baseURL = dev ? '' : config.api_url
@@ -20,7 +23,7 @@ axios.interceptors.request.use(
 	},
 	fail => {
 		uni.hideLoading()
-		return new Promise.reject(fail)
+		return Promise.reject(fail)
 	}
 )
 
@@ -72,6 +75,12 @@ axios.interceptors.response.use(
 					title: '服务器繁忙'
 				})
 				break
+			case 504:
+				uni.showToast({
+					icon: 'error',
+					title: '请求超时'
+				})
+				break
 			default:
 				uni.showToast({
 					icon: 'error',
@@ -79,7 +88,7 @@ axios.interceptors.response.use(
 				})
 				break
 		}
-		return Promise.reject(fail.response.data.msg)
+		return Promise.reject(fail.response)
 	}
 )
 

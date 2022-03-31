@@ -1,5 +1,6 @@
 <template>
-	<view class="content">
+	<view class="v-index">
+
 	</view>
 </template>
 <script>
@@ -9,25 +10,33 @@
 		api404,
 		api503,
 		api504,
+		apiUpload
 	} from '@/request/api.js'
 	export default {
 		data() {
 			return {}
 		},
 		onLoad() {
-			api200()
+			//不同状态接口测试
+			api200().then(res=>{
+				console.log(res)
+			})
 			setTimeout(() => {
 				api403()
-			}, 3000)
+			}, 2000)
 			setTimeout(() => {
-				api404()
-			}, 6000)
+				api404().then(res=>{
+					console.log(res)
+				}).catch(err=>{
+					console.log(err)
+				})
+			}, 4000)
 			setTimeout(() => {
 				api503()
-			}, 9000)
+			}, 6000)
 			setTimeout(() => {
 				api504()
-			}, 12000)
+			}, 8000)
 		},
 		methods: {
 
