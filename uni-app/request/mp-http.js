@@ -16,8 +16,8 @@ export default {
 	put: (url, data = {}, header = {}) => {
 		return request(url, 'PUT', params, header)
 	},
-	delete: (url, params = {}, header = {}) => {
-		return request(url, 'DELETE', params, header)
+	delete: (url, data = {}, header = {}) => {
+		return request(url, 'DELETE', data, header)
 	},
 	upload: (url, name, filePath, header = {}, formData = {}) => {
 		return new Promise((resolve, reject) => {
