@@ -18,9 +18,9 @@ axios.interceptors.request.use(
 		}
 		return request
 	},
-	error => {
+	fail => {
 		uni.hideLoading()
-		return new Promise.reject(error)
+		return new Promise.reject(fail)
 	}
 )
 
@@ -38,36 +38,43 @@ axios.interceptors.response.use(
 		switch (status) {
 			case 400:
 				uni.showToast({
+					icon: 'error',
 					title: '请求参数错误'
 				})
 				break
 			case 401:
 				uni.showToast({
+					icon: 'error',
 					title: '请登录'
 				})
 				break
 			case 403:
 				uni.showToast({
+					icon: 'error',
 					title: '权限不足'
 				})
 				break
 			case 404:
 				uni.showToast({
+					icon: 'error',
 					title: '接口地址不存在'
 				})
 				break
 			case 500:
 				uni.showToast({
+					icon: 'error',
 					title: '服务器错误'
 				})
 				break
 			case 503:
 				uni.showToast({
+					icon: 'error',
 					title: '服务器繁忙'
 				})
 				break
 			default:
 				uni.showToast({
+					icon: 'error',
 					title: '网络错误'
 				})
 				break

@@ -1,4 +1,4 @@
-const api_url = '跨域请求地址'
+const api_url = 'http://rap2api.taobao.org/app/mock/269355/'
 const style_path = '@/assets/style/style.less'
 module.exports = {
 	devServer: {

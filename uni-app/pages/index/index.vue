@@ -3,16 +3,31 @@
 	</view>
 </template>
 <script>
-	import {apiSetting} from '@/request/api.js'
+	import {
+		api200,
+		api403,
+		api404,
+		api503,
+		api504,
+	} from '@/request/api.js'
 	export default {
 		data() {
-			return {
-			}
+			return {}
 		},
 		onLoad() {
-			apiSetting().then(res=>{
-				console.log(res)
-			})
+			api200()
+			setTimeout(() => {
+				api403()
+			}, 3000)
+			setTimeout(() => {
+				api404()
+			}, 6000)
+			setTimeout(() => {
+				api503()
+			}, 9000)
+			setTimeout(() => {
+				api504()
+			}, 12000)
 		},
 		methods: {
 
