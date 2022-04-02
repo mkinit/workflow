@@ -14,6 +14,7 @@ module.exports = {
 		loaderOptions: {
 			less: {
 				globalVars: {
+					//小程序使用这个全局配置后，所有打包出来的页面样式都会有全局的样式
 					'hack': `true; @import '${style_path}'`
 				}
 			}
