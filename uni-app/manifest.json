@@ -52,6 +52,7 @@
     "mp-weixin" : {
         "appid" : "wxf99bc6f53d9251b0",
 		"sitemapLocation":"sitemap.json",
+        "lazyCodeLoading": "requiredComponents",
         "setting" : {
             "urlCheck" : false
         },
