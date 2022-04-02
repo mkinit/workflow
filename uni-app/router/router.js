@@ -1,5 +1,3 @@
-import Vue from 'vue'
-import config from '@/config.js'
 import route from './route.js'
 //navigateTo、redirectTo、reLaunch、switchTab、
 export default (name, params, type = "navigateTo") => {
