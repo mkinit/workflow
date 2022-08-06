@@ -1,11 +1,4 @@
-// #ifdef APP-PLUS || H5
-import http from './axios.js'
-// #endif
-
-// #ifdef MP
 import http from './mp-http.js'
-// #endif
-
 
 //状态码测试接口
 export const api200 = () => {
