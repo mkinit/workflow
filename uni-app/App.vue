@@ -37,4 +37,5 @@
 
 <style lang="less">
 	/*每个页面公共css */
+	@import url('./assets/style/style.less');
 </style>

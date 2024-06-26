@@ -45,4 +45,7 @@
 </script>
 
 <style lang="less">
+	.v-index{
+		
+	}
 </style>
