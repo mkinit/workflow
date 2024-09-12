@@ -45,6 +45,9 @@ export default {
 
 //请求函数
 function request(url, method, data, header) {
+	uni.showLoading({
+		mask: true
+	})
 	return new Promise((resolve, reject) => {
 		uni.request({
 			url: config.api_url + url,
@@ -52,9 +55,10 @@ function request(url, method, data, header) {
 			data,
 			header: Object.assign(request_header, header),
 			success: response => {
+				uni.hideLoading()
 				const status_code = response.statusCode
 				if (/^2[\d]+/.test(status_code)) {
-					resolve(response)
+					resolve(response.data)
 				} else {
 					checkStatus(status_code, response, resolve, reject)
 				}
@@ -75,52 +79,20 @@ function fail(err) {
 //检查非2开头的状态码并统一做出响应
 function checkStatus(status_code, response, resolve, reject) {
 	switch (status_code) {
-		case 400:
-			uni.showToast({
-				icon: 'error',
-				title: '请求参数错误'
-			})
-			break
 		case 401:
 			uni.showToast({
 				icon: 'error',
-				title: '请登录'
+				title: '身份验证过期，请重新登录！'
 			})
-			break
-		case 403:
-			uni.showToast({
-				icon: 'error',
-				title: '权限不足'
-			})
-			break
-		case 404:
-			uni.showToast({
-				icon: 'error',
-				title: '接口地址不存在'
-			})
-			break
-		case 500:
-			uni.showToast({
-				icon: 'error',
-				title: '服务器错误'
-			})
-			break
-		case 503:
-			uni.showToast({
-				icon: 'error',
-				title: '服务器繁忙'
-			})
-			break
-		case 504:
-			uni.showToast({
-				icon: 'error',
-				title: '请求超时'
-			})
+			setTimeout(() => {
+				//清空用户数据和过期的token
+				logout()
+			}, 1500)
 			break
 		default:
 			uni.showToast({
 				icon: 'error',
-				title: '网络错误'
+				title: response.data.msg
 			})
 			break
 	}
