@@ -1,15 +1,17 @@
-// #ifdef APP-PLUS || H5
-const api_url = 'http://rap2api.taobao.org/app/mock/269355/'
-// #endif
-
 const styel_var = '@/assets/style/var.less'
 module.exports = {
 	devServer: {
-		// #ifdef APP-PLUS || H5
-		proxy: api_url,
-		// #endif
+		proxy: {
+			//开启代理需要config.js中的base_url为空
+			'/js2-json/v1': {
+				target: 'https://js2api.com',
+				pathRewrite: {
+					'^/js2-json/v1': '/js2-json/v1'
+				}
+			},
+		},
 	},
-	
+
 	css: {
 		loaderOptions: {
 			less: {
