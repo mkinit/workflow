@@ -89,6 +89,12 @@ function checkStatus(status_code, response, resolve, reject) {
 				logout()
 			}, 1500)
 			break
+		case 500:
+			uni.showToast({
+				icon: 'error',
+				title: '服务器错误'
+			})
+			break
 		default:
 			uni.showToast({
 				icon: 'error',
