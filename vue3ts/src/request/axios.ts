@@ -68,8 +68,8 @@ axios.interceptors.response.use(
 					//Message.error(msg)
 					break
 			}
-			return Promise.reject(fail)
 		}
+		return Promise.reject(fail)
 	}
 )
 
