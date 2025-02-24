@@ -28,7 +28,7 @@ export default {
 				header: Object.assign(request_header, header, {
 					'content-type': 'multipart/form-data',
 				}),
-				formData: formData,
+				formData,
 				success: response => {
 					const status_code = response.statusCode
 					if (/^2[\d]+/.test(status_code)) {
