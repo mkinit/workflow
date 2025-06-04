@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-//import { Message, Loading } from 'element-ui'
+import { ElMessage, ElLoading } from 'element-plus'
 
 import config from '@/config.ts'
 
@@ -11,12 +11,12 @@ axios.defaults.baseURL = (config.is_dev && use_proxy) ? '/api' : config.api_url
 
 axios.defaults.timeout = 10000
 
-//let loadingInstance
+let loadingInstance
 
 //请求拦截
 axios.interceptors.request.use(
 	config => {
-		//loadingInstance = Loading.service()
+		loadingInstance = ElLoading.service()
 		/*if (localStorage.getItem('user')) {
 			config.headers.token = JSON.parse(
 				localStorage.getItem('user')
@@ -39,33 +39,33 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(
 	success => {
 		//成功，HTTP状态：200
-		//loadingInstance.close()
+		loadingInstance.close()
 		return Promise.resolve(success.data)
 	},
 	fail => {
 		if (fail.message == 'Network Error') {
-			//Message.error('网络错误，请检查网络是否正常')
+			ElMessage.error('网络错误，请检查网络是否正常')
 		}
 		if (fail.message.indexOf('timeout') >= 0) {
-			//Message.error('请求超时')
+			ElMessage.error('请求超时')
 		}
-		//loadingInstance.close()
+		loadingInstance.close()
 		if (fail.response) {
 			//请求成功，有响应，但不是2开头的状态码，根据需求按HTTP状态处理
 			const status = fail.response.status
-			//const msg = fail.response.data.msg
+			const msg = fail.response.data.msg
 			switch (status) {
 				case 401:
-					//Message.error('身份验证过期，请重新登录！')
+					ElMessage.error('身份验证过期，请重新登录！')
 					setTimeout(() => {
 						//做退出登陆后的操作
 					}, 1500)
 					break
 				case 500:
-					//Message.error('服务器错误')
+					ElMessage.error('服务器错误')
 					break
 				default:
-					//Message.error(msg)
+					ElMessage.error(msg)
 					break
 			}
 		}
