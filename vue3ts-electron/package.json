@@ -1,0 +1,62 @@
+{
+  "name": "vue3ts-electron",
+  "private": true,
+  "version": "0.0.0",
+  "main": "./src-electron/main.js",
+  "description": "electron vite vue3 ts",
+  "author": "mkinit",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview",
+    "electron:build": "vite build && electron-builder"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "vue": "^3.5.12",
+    "vue-router": "^4.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.8.1",
+    "@vitejs/plugin-vue": "^5.1.4",
+    "electron": "^36.3.2",
+    "electron-builder": "^26.0.12",
+    "electron-devtools-installer": "^4.0.0",
+    "less": "^4.2.0",
+    "typescript": "~5.6.2",
+    "vite": "^5.4.9",
+    "vite-plugin-electron": "^0.29.0",
+    "vue-tsc": "^2.1.6"
+  },
+  "build": {
+    "productName": "vue3ts-electron",
+    "appId": "www.mkinit.com",
+    "copyright": "mkinit.com © 2025",
+    "compression": "maximum",
+    "asar": true,
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "src-electron/main.js"
+    ],
+    "electronLanguages":["zh-CN"],
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": true,
+      "deleteAppDataOnUninstall": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "vue3ts-electron"
+    },
+    "win": {
+      "icon": "./public/icon256.ico",
+      "artifactName": "${productName}-v${version}-${platform}-setup.${ext}",
+      "target": [{
+        "target": "portable"
+      }]
+    }
+  }
+}
