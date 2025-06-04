@@ -8,19 +8,20 @@ process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
 // 创建浏览器窗口时，调用这个函数。
 const createWindow = () => {
     const win = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 1280,
+        height: 768,
         title: '应用名称',
         icon: join(__dirname, '../public/icon256.ico'),
+        autoHideMenuBar: true, //隐藏菜单
     })
 
-    // win.loadURL('http://localhost:3000')
     // development模式
-    if(process.env.VITE_DEV_SERVER_URL) {
+    if (process.env.VITE_DEV_SERVER_URL) {
+        // win.loadURL('http://localhost:3000')
         win.loadURL(process.env.VITE_DEV_SERVER_URL)
         // 开启调试台
         win.webContents.openDevTools()
-    }else {
+    } else {
         win.loadFile(join(__dirname, '../dist/index.html'))
     }
 }

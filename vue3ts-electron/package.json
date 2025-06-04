@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "axios": "^1.7.7",
+    "element-plus": "^2.9.11",
     "vue": "^3.5.12",
     "vue-router": "^4.4.5"
   },
@@ -41,7 +42,9 @@
       "dist/**/*",
       "src-electron/main.js"
     ],
-    "electronLanguages":["zh-CN"],
+    "electronLanguages": [
+      "zh-CN"
+    ],
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
@@ -54,9 +57,11 @@
     "win": {
       "icon": "./public/icon256.ico",
       "artifactName": "${productName}-v${version}-${platform}-setup.${ext}",
-      "target": [{
-        "target": "portable"
-      }]
+      "target": [
+        {
+          "target": "portable"
+        }
+      ]
     }
   }
 }
