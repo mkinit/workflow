@@ -1,6 +1,9 @@
-# Vue 3 + TypeScript + Vite
+## Vue 3 + TypeScript + Vite + electron
 
-## 添加less、router、axios、@路径
+### 注意
+- package.json
+	- 删除 "type": "module"，或改成“commonjs”，否则会报错
+	- "build-win-target"参数：portable（单文件），zip（压缩包），dir（文件夹模式），nsis（安装包）
 
 ### 打包问题
 如果出现electron和依赖无法下载，需要手动将资源下载后放到指定位置：

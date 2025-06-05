@@ -10,7 +10,7 @@ export default defineConfig({
 		vue(),
 		electron({
 			// 主进程入口文件
-			entry: './src-electron/main.js'
+			entry: './electron.js'
 		})
 	],
 	resolve: {

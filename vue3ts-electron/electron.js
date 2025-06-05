@@ -11,8 +11,11 @@ const createWindow = () => {
         width: 1280,
         height: 768,
         title: '应用名称',
-        icon: join(__dirname, '../public/icon256.ico'),
+        icon: join(__dirname, './public/icon256.ico'),
         autoHideMenuBar: true, //隐藏菜单
+        webPreferences: {
+            preload: join(__dirname, 'preload.js')
+        }
     })
 
     // development模式
@@ -22,7 +25,7 @@ const createWindow = () => {
         // 开启调试台
         win.webContents.openDevTools()
     } else {
-        win.loadFile(join(__dirname, '../dist/index.html'))
+        win.loadFile(join(__dirname, './dist/index.html'))
     }
 }
 

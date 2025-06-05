@@ -2,7 +2,7 @@
   "name": "vue3ts-electron",
   "private": true,
   "version": "0.0.0",
-  "main": "./src-electron/main.js",
+  "main": "./electron.js",
   "description": "electron vite vue3 ts",
   "author": "mkinit",
   "scripts": {
@@ -18,7 +18,7 @@
     "vue-router": "^4.4.5"
   },
   "devDependencies": {
-    "@types/node": "^22.8.1",
+    "@types/node": "^22.15.29",
     "@vitejs/plugin-vue": "^5.1.4",
     "electron": "^36.3.2",
     "electron-builder": "^26.0.12",
@@ -38,9 +38,11 @@
     "directories": {
       "output": "release"
     },
+    "icon": "./public/icon256.ico",
     "files": [
       "dist/**/*",
-      "src-electron/main.js"
+      "electron.js",
+      "preload.js"
     ],
     "electronLanguages": [
       "zh-CN"
@@ -56,10 +58,10 @@
     },
     "win": {
       "icon": "./public/icon256.ico",
-      "artifactName": "${productName}-v${version}-${platform}-setup.${ext}",
+      "artifactName": "${productName}-v${version}-${platform}-${arch}.${ext}",
       "target": [
         {
-          "target": "portable"
+          "target": "dir"
         }
       ]
     }
