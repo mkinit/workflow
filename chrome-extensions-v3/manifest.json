@@ -1,0 +1,40 @@
+{
+	"manifest_version": 3,
+	"name": "chrome插件", //插件名称
+	"description": "chrome插件", //插件描述
+	"version": "1.0.0", //插件版本
+	"host_permissions": [
+		"*://*/*",
+		"https://*/*"
+	], //插件需要的主机权限
+	"permissions": [
+		"cookies",
+		"storage"
+	], //插件需要功能的权限
+	"background": {
+		"service_worker": "background.js" //后台任务
+	},
+	"content_scripts": [ //注入资源
+		{
+			"matches": [
+				"*://test.com/*",
+				"*://test2.com/*",
+			], //要注入脚本的页面
+			"css": [
+				"main.css"
+			], //注入样式
+			"js": [
+				"foreground.js"
+			], //注入脚本
+			"run_at": "document_end" //运行时机虽然document_end是在DOM完成之后，实际上还是需要等window.onload加载完才能执行前台任务
+		}
+	],
+	"action": {
+		"default_icon": "images/logo.png", //插件栏图标
+		"default_popup": "index.html" //点击插件打开的界面
+	},
+	"icons": {
+		"48": "images/logo.png" //扩展程序图标
+	},
+	"update_url": "https://clients2.google.com/service/update2/crx" //插件升级地址
+}

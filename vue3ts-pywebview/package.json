@@ -1,0 +1,32 @@
+{
+  "name": "vue3ts",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "venv": "python -m venv venv",
+    "init": "npm install && venv\\scripts\\pip install -r requirements.txt",
+    "dev-app":"venv\\scripts\\python -X dev main.py",
+    "build-app":"venv\\scripts\\python -m PyInstaller --clean --noconfirm main.spec",
+    "start": "npm-run-all --parallel dev dev-app",
+    "build-all":"npm-run-all --sequential build build-app",
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "element-plus": "^2.9.11",
+    "vue": "^3.5.12",
+    "vue-router": "^4.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.8.1",
+    "@vitejs/plugin-vue": "^5.1.4",
+    "less": "^4.2.0",
+    "npm-run-all": "^4.1.5",
+    "typescript": "~5.6.2",
+    "vite": "^5.4.9",
+    "vue-tsc": "^2.1.6"
+  }
+}
