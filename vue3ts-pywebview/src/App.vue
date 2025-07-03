@@ -18,7 +18,7 @@ import '@/assets/style/main.less'
 <style lang="less" scoped>
 .fade-enter-active,
 .fade-leave-active {
-	transition: opacity .5s ease;
+	transition: opacity .28s ease;
 }
 
 .fade-enter-from,
