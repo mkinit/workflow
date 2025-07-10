@@ -4,14 +4,15 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "venv": "python -m venv venv",
-    "init": "npm install && venv\\scripts\\pip install -r requirements.txt",
-    "dev-app":"venv\\scripts\\python -X dev main.py",
-    "build-app":"venv\\scripts\\python -m PyInstaller --clean --noconfirm main.spec",
-    "start": "npm-run-all --parallel dev dev-app",
-    "build-all":"npm-run-all --sequential build build-app",
+    "init": "npm install && python -m venv venv && venv\\scripts\\pip install -r requirements.txt",
     "dev": "vite",
+    "dev-app":"venv\\scripts\\python -X dev main.py",
+    "start": "npm-run-all --parallel dev dev-app",
     "build": "vue-tsc -b && vite build",
+    "build-pyinstaller":"venv\\scripts\\python -m PyInstaller --clean --noconfirm main.spec --distpath=pyinstall-dist",
+    "build-pyinstaller-all":"npm-run-all --sequential build build-pyinstaller",
+    "build-nuitka":"venv\\scripts\\python -m nuitka --standalone --windows-console-mode=disable --windows-icon-from-ico=src/static/images/icon64.ico --include-data-dir=dist=dist --output-dir=nuitka-dist main.py",
+    "build-nuitka-all":"npm-run-all --sequential build build-nuitka",
     "preview": "vite preview"
   },
   "dependencies": {
