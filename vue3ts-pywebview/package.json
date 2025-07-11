@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "install": "npm install && python -m venv venv && venv\\scripts\\pip install -r requirements.txt",
+    "init": "npm install && python -m venv venv && venv\\scripts\\pip install -r requirements.txt",
     "dev": "vite",
     "dev-app": "venv\\scripts\\python -X dev main.py",
     "start": "npm-run-all --parallel dev dev-app",
