@@ -5,6 +5,7 @@
 			<div class="js2-padding-s">
 				<el-button @click="pythonFunc('test')">test</el-button>
 				<el-button @click="pythonFunc('test2')">test2</el-button>
+				<el-button @click="pythonFunc('test3')">test3</el-button>
 				<el-button @click="reject">reject</el-button>
 				<el-button @click="cmd">cmd</el-button>
 			</div>
