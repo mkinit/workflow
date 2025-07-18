@@ -1,33 +1,39 @@
 <template setup>
 	<div class="p-form">
-		<form action="">
-			{{count}}
-			<button type="button" @click="count++">count is {{ count }}</button>
-			<el-button type="primary" @click="test">点击调用python函数</el-button>
-			<el-button type="primary" @click="reject">点击调用python函数reject</el-button>
-		</form>
+		<div class="js2-padding-xxl">
+			<div class="js2-padding-s">这是一个测试页面</div>
+			<div class="js2-padding-s">
+				<el-button @click="pythonFunc('test')">test</el-button>
+				<el-button @click="pythonFunc('test2')">test2</el-button>
+				<el-button @click="reject">reject</el-button>
+				<el-button @click="cmd">cmd</el-button>
+			</div>
+		</div>
 	</div>
 </template>
 <script setup>
-import { ref } from 'vue'
-const count = ref(0)
-
-const test = async () => {
-	const result = await pywebview.api.test()
+const pythonFunc = async (name) => {
+	const result = await pywebview.api[name]()
 	console.log(result)
 }
 
 const reject = async () => {
-	try{
-		const result = await pywebview.api.reject()
+	try {
+		await pywebview.api.reject()
+	} catch (err) {
+		console.log(err)
+	}
+}
+
+const cmd = async () => {
+	try {
+		const result = await pywebview.api.cmd()
 		console.log(result)
-	}catch(err){
+	} catch (err) {
 		console.log(err)
 	}
 }
 </script>
 <style lang="less">
-.p-form {
-	color: @primary;
-}
+.p-form {}
 </style>

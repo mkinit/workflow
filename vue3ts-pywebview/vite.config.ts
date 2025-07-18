@@ -10,11 +10,4 @@ export default defineConfig({
             '@': resolve(__dirname, './src')
         }
     },
-    css: {
-        preprocessorOptions: {
-            less: {
-                additionalData: `@import '@/assets/style/var.less';`, //配置less全局变量
-            },
-        },
-    },
 })

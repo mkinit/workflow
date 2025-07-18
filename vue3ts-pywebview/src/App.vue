@@ -1,8 +1,9 @@
-<script setup>
-import '@/assets/style/main.less'
-</script>
 <template>
 	<div class="app-wrap">
+		<div class="js2-padding-s">
+			<el-button :type="router.currentRoute.value.name=='home'?'primary':''" @click="goto('home')">首页</el-button>
+			<el-button :type="router.currentRoute.value.name=='test'?'primary':''" @click="goto('test')">测试</el-button>
+		</div>
 		<router-view v-slot="{ Component }">
 			<transition name="fade" mode="out-in">
 				<!-- 如果使用过渡效果的话，需要用include，路由的keep_alive属性忽略 -->
@@ -11,10 +12,19 @@ import '@/assets/style/main.less'
 				</keep-alive>
 			</transition>
 		</router-view>
-		<RouterLink to="/">首页</RouterLink>
-		<RouterLink to="/test">测试</RouterLink>
+		
 	</div>
 </template>
+<script setup>
+import '@/assets/style/reset.css'
+import '@/assets/style/public.css'
+import '@/assets/style/nocss.css'
+import '@/assets/style/app.less'
+import router from '@/router'
+const goto = name=>{
+	router.replace({name})
+}
+</script>
 <style lang="less" scoped>
 .fade-enter-active,
 .fade-leave-active {
