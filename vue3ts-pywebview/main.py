@@ -1,6 +1,5 @@
 import sys
 import subprocess
-import time
 import webview
 
 isdev = sys.flags.dev_mode
