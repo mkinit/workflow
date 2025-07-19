@@ -1,6 +1,4 @@
-import sys
-import subprocess
-import webview
+import sys, subprocess, webview
 
 isdev = sys.flags.dev_mode
 
