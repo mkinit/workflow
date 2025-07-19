@@ -1,5 +1,5 @@
 <template setup>
-	<div class="p-form">
+	<div class="p-test">
 		<div class="js2-padding-xxl">
 			<div class="js2-padding-s">这是一个测试页面</div>
 			<div class="js2-padding-s">
@@ -36,5 +36,5 @@ const cmd = async () => {
 }
 </script>
 <style lang="less">
-.p-form {}
+.p-test {}
 </style>
