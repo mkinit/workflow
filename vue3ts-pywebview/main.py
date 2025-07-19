@@ -38,7 +38,7 @@ def cmd():
 
 # 整个类的所有函数也可以暴露给前端
 class Api:
-    def test3():
+    def test3(self):
         return "这是通过直接调用js_api暴露给前端的函数3"
 
 
@@ -49,12 +49,11 @@ def expose(window):
 
 # python 执行javascript
 def runjs():
-    window.evaluate_js('alert("hello")')
+    window.evaluate_js('alert("前端界面加载完毕")')
 
 
 ## 前端加载完毕事件，测试执行javascript
 def onLoaded():
-    print("DOM is ready")
     runjs()
 
 

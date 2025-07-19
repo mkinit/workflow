@@ -13,9 +13,14 @@
 	</div>
 </template>
 <script setup>
+console.log(pywebview)
 const pythonFunc = async (name) => {
-	const result = await pywebview.api[name]()
-	console.log(result)
+	try {
+		const result = await pywebview.api[name]()
+		console.log(result)
+	} catch (err) {
+		console.log(err)
+	}
 }
 
 const reject = async () => {
