@@ -1,5 +1,4 @@
-import tkinter
-import sys, subprocess, webview
+import sys, time, tkinter, subprocess, webview
 
 isdev = sys.flags.dev_mode
 
@@ -59,6 +58,12 @@ def expose(window):
 def runjs():
     window.evaluate_js('alert("前端界面加载完毕")')
 
+def evaluate_js(script):
+    if script=='callback':
+        window.evaluate_js("callback('{\"data\":\"这是数据\",\"message\":\"这是python传递的消息，三秒后会再次传递不同的消息\"}')")
+        time.sleep(3)
+        window.evaluate_js("callback('{\"data\":\"这是数据\",\"message\":\"这是三秒后python再次传递的消息\"}')")
+
 
 ## 前端加载完毕事件，测试执行javascript
 def onLoaded():
@@ -71,6 +76,6 @@ if __name__ == "__main__":
     window = webview.create_window(title="Python + pywebview", url=url, js_api=api, width=width, height=height, x=x, y=y, min_size=min_size)
     window.events.loaded += onLoaded
     # 2、使用window.expose方式暴露函数给前端
-    window.expose(reject, cmd)
+    window.expose(reject, cmd, evaluate_js)
     # 3、使用func传参方式暴露函数给前端
     webview.start(func=expose, args=window, debug=isdev)
