@@ -1,3 +1,4 @@
+import tkinter
 import sys, subprocess, webview
 
 isdev = sys.flags.dev_mode
@@ -9,8 +10,15 @@ else:
     # 正式环境
     url = "dist/index.html"
 
+root = tkinter.Tk()
 window = None
-
+width = 1024
+height = 580
+min_size = (640, 480)
+screen_width = root.winfo_screenwidth()
+screen_height = root.winfo_screenheight()
+x = (screen_width / 2) - (width / 2)
+y = (screen_height / 2) - (height / 2)
 
 # 测试暴露给前端的函数
 def test():
@@ -60,7 +68,7 @@ def onLoaded():
 if __name__ == "__main__":
     api = Api()
     # 1、使用js_api传参方式暴露函数给前端
-    window = webview.create_window(title="Python + pywebview", url=url, js_api=api)
+    window = webview.create_window(title="Python + pywebview", url=url, js_api=api, width=width, height=height, x=x, y=y, min_size=min_size)
     window.events.loaded += onLoaded
     # 2、使用window.expose方式暴露函数给前端
     window.expose(reject, cmd)
