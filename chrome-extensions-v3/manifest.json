@@ -2,7 +2,7 @@
 	"manifest_version": 3,
 	"name": "chrome插件", //插件名称
 	"description": "chrome插件", //插件描述
-	"version": "1.0.0", //插件版本
+	"version": "0.0.0", //插件版本
 	"host_permissions": [
 		"*://*/*",
 		"https://*/*"
@@ -18,7 +18,7 @@
 		{
 			"matches": [
 				"*://test.com/*",
-				"*://test2.com/*",
+				"*://test2.com/*"
 			], //要注入脚本的页面
 			"css": [
 				"main.css"
