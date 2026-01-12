@@ -32,6 +32,7 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
+    contents_directory='.',
     icon=['src\\static\\images\\icon64.ico'],
 )
 coll = COLLECT(
