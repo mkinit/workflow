@@ -11,7 +11,7 @@
     "build": "vue-tsc -b && vite build",
     "build-pyinstaller": "venv\\scripts\\python -m PyInstaller --clean --noconfirm main.spec --distpath=pyinstall-dist",
     "build-pyinstaller-all": "npm-run-all --sequential build build-pyinstaller",
-    "build-nuitka": "venv\\scripts\\python -m nuitka --standalone --windows-console-mode=disable --windows-icon-from-ico=src/static/images/icon64.ico --include-data-dir=dist=dist --output-dir=nuitka-dist main.py",
+    "build-nuitka": "venv\\scripts\\python -m nuitka --standalone --enable-plugin=tk-inter --windows-console-mode=disable --windows-icon-from-ico=src/static/images/icon64.ico --include-data-dir=dist=dist --output-dir=nuitka-dist main.py",
     "build-nuitka-all": "npm-run-all --sequential build build-nuitka",
     "preview": "vite preview"
   },

@@ -20,3 +20,12 @@
 - build-pyinstaller-all：同步打包前端和python工程（pyinstaller）
 - build-nuitka：打包python工程（nuitka）
 - build-nuitka-all：同步打包前端和python工程（nuitka）
+
+## 注意事项
+
+### TS
+- pywebview在前端调用时，TS是无法检测到的，所以打包的时候需要在JS代码第一行写个注释：// @ts-nocheck
+
+### nuitka
+- nuitka打包时，手动引用第三方程序的文件夹，使用“--include-data-dir=文件夹=文件夹”打包参数是无效的，python和exe相关代码文件会被忽略（不复制），需要使用“--include-data-files=文件夹/*=文件夹/”
+	- 具体文件后缀文档说明：https://nuitka.net/user-documentation/user-manual.html#code-is-not-data-files

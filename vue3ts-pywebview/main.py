@@ -1,5 +1,7 @@
 import sys, time, tkinter, subprocess, webview
 
+version = "1.0.0"
+
 isdev = sys.flags.dev_mode
 
 if isdev:
@@ -8,6 +10,8 @@ if isdev:
 else:
     # 正式环境
     url = "dist/index.html"
+
+from Api import Api
 
 root = tkinter.Tk()
 window = None
@@ -36,17 +40,7 @@ def reject():
 
 # 测试调用cmd命令
 def cmd():
-    result = subprocess.run(["dir"], capture_output=True, text=True)
-    if result.returncode == 0:
-        return result.stdout
-    else:
-        raise Exception(result.stderr)
-
-
-# 整个类的所有函数也可以暴露给前端
-class Api:
-    def test3(self):
-        return "这是通过直接调用js_api暴露给前端的函数3"
+    return api._cmd('dir')
 
 
 # 统一暴露函数
@@ -73,7 +67,7 @@ def onLoaded():
 if __name__ == "__main__":
     api = Api()
     # 1、使用js_api传参方式暴露函数给前端
-    window = webview.create_window(title="Python + pywebview", url=url, js_api=api, width=width, height=height, x=x, y=y, min_size=min_size)
+    window = webview.create_window(title=f"Python + pywebview {version} {'dev' if isdev else ''}", url=url, js_api=api, width=width, height=height, x=x, y=y, min_size=min_size)
     window.events.loaded += onLoaded
     # 2、使用window.expose方式暴露函数给前端
     window.expose(reject, cmd, evaluate_js)
