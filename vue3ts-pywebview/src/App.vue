@@ -16,10 +16,6 @@
 	</div>
 </template>
 <script setup>
-import '@/assets/style/reset.css'
-import '@/assets/style/public.css'
-import '@/assets/style/nocss.css'
-import '@/assets/style/app.less'
 import router from '@/router'
 const goto = name=>{
 	router.replace({name})

@@ -24,6 +24,5 @@ const getData = () => {
 </script>
 <style lang="less">
 .p-home {
-	color: @primary;
 }
 </style>

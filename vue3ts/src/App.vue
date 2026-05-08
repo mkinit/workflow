@@ -1,6 +1,3 @@
-<script setup>
-import '@/assets/style/main.less'
-</script>
 <template>
 	<div class="app-wrap">
 		<router-view v-slot="{ Component }">
@@ -15,14 +12,16 @@ import '@/assets/style/main.less'
 		<RouterLink to="/test">测试</RouterLink>
 	</div>
 </template>
+<script setup>
+</script>
 <style lang="less" scoped>
-.fade-enter-active,
-.fade-leave-active {
-	transition: opacity .5s ease;
-}
+	.fade-enter-active,
+	.fade-leave-active {
+		transition: opacity .5s ease;
+	}
 
-.fade-enter-from,
-.fade-leave-to {
-	opacity: 0;
-}
+	.fade-enter-from,
+	.fade-leave-to {
+		opacity: 0;
+	}
 </style>

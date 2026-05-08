@@ -12,9 +12,7 @@
 		<RouterLink to="/test">测试</RouterLink>
 	</div>
 </template>
-<script setup>
-import '@/assets/style/main.less'
-</script>
+<script setup></script>
 <style lang="less" scoped>
 .fade-enter-active,
 .fade-leave-active {

@@ -16,7 +16,7 @@ module.exports = {
 			less: {
 				globalVars: {
 					//使用全局less变量，小程序使用这个全局配置后，所有打包出来的页面样式都会有全局的样式，所以只能用来定义变量
-					'hack': `true; @import '${styel_var}'`
+					//'hack': `true; @import '${styel_var}'`
 				}
 			}
 		}

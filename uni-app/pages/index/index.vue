@@ -1,6 +1,5 @@
 <template>
 	<view class="v-index">
-
 	</view>
 </template>
 <script>

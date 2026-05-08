@@ -13,7 +13,7 @@ export default defineConfig({
     css: {
         preprocessorOptions: {
             less: {
-                additionalData: `@import '@/assets/style/var.less';`, //配置less全局变量
+                //additionalData: `@import '@/assets/style/var.less';`, //配置less全局变量
             },
         },
     },

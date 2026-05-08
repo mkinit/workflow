@@ -1,5 +1,6 @@
 <template setup>
 	<div class="p-home">
+		ni hao
 		<form action="">
 			{{count}}
 			<el-button type="primary" @click="count++">count is {{ count }}</el-button>
@@ -24,6 +25,6 @@ const getData = () => {
 </script>
 <style lang="less">
 .p-home {
-	color: @primary;
+	
 }
 </style>

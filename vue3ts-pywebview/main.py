@@ -6,7 +6,7 @@ isdev = sys.flags.dev_mode
 
 if isdev:
     # 开发环境
-    url = "http://localhost:5173"
+    url = "http://localhost:5173/#/"
 else:
     # 正式环境
     url = "dist/index.html"
